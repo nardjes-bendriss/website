@@ -1,0 +1,2223 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+      <meta charset="utf-8" />
+      <title>B&B Admin</title>
+      <meta name="description" content="Static &amp; Dynamic Tables" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+      <!-- bootstrap & fontawesome -->
+      <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+      <!-- Test-->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <!-- page specific plugin styles -->
+      <!-- text fonts -->
+      <link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
+      <!-- ace styles -->
+      <link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+      <link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
+      <link rel="stylesheet" type="text/css" href="progrssbar.css">
+      <link rel="stylesheet" type="text/css" href="message.css">
+      <script src="assets/js/ace-extra.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+      <script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>                                      
+   </head>
+   <body class="no-skin">
+      <div id="navbar" class="navbar navbar-default          ace-save-state">
+         <div class="navbar-container ace-save-state" id="navbar-container">
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+            <span class="sr-only">Toggle sidebar</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-header pull-left">
+               <a href="index.html" class="navbar-brand">
+               <small>
+               <i class="fa fa-leaf"></i>
+               B&B Admin
+               </small>
+               </a>
+            </div>
+            <div class="navbar-buttons navbar-header pull-right" role="navigation">
+               <ul class="nav ace-nav">
+                  <li class="light-blue dropdown-modal">
+                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                     <img class="nav-user-photo" src="assets/images/avatars/avatar3.png" alt="Jason's Photo" />
+                     <span class="user-info">
+                     Bienvenue
+                     </span>
+                     <i class="ace-icon fa fa-caret-down"></i>
+                     </a>
+                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                        <li>
+                           <a href="#">
+                           <i class="ace-icon fa fa-cog"></i>
+                           Paramétres
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#">
+                           <i class="ace-icon fa fa-user"></i>
+                           Profile
+                           </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                           <a href="#">
+                           <i class="ace-icon fa fa-power-off"></i>
+                           Déconnexion
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <!-- /.navbar-container -->
+      </div>
+      <div class="main-container ace-save-state" id="main-container">
+      <script type="text/javascript">
+         try{ace.settings.loadState('main-container')}catch(e){}
+      </script>
+      <div id="sidebar" class="sidebar  responsive  ace-save-state">
+         <script type="text/javascript">
+            try{ace.settings.loadState('sidebar')}catch(e){}
+         </script>
+         <ul class="nav nav-list">
+            <li class="">
+               <a href="./dashboard.html">
+               <i class="menu-icon fa fa-tachometer"></i>
+               <span class="menu-text"> Dashboard </span>
+               </a>
+               <b class="arrow"></b>
+            </li>
+            <li class="active open">
+               <a href="#" class="dropdown-toggle">
+               <i class="menu-icon fa fa-list"></i>
+               <span class="menu-text"> Commandes </span>
+               </a>
+            </li>
+         </ul>
+         <!-- /.nav-list -->
+         <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+            <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+         </div>
+      </div>
+      <div class="main-content">
+      <div class="main-content-inner">
+      <div class="page-content">
+      <div class="row">
+      <div class="col-xs-12">
+      <!-- PAGE CONTENT BEGINS -->
+      <div class="row">
+      <h3 class="header smaller lighter blue">Tableau de commandes</h3>
+      <div class="clearfix">
+         <div  class=" pull-right">
+            <div class="col-sm-12" style="    margin-bottom: 5px;">
+               <a href="#myModal1" class="btn btn-success bs" data-toggle="modal"> <span>Ajouter une commande</span></a>
+               <button type="button" class="btn btn-danger bd" onclick="JSalert()">Supprimer une commande</button>
+            </div>
+         </div>
+         <script type="text/javascript">
+            function JSalert(){
+               swal({  
+                title: "Veuillez sélectionner un ou plusieurs bon de commandes",   
+                type: "warning",   
+                closeOnConfirm: false,   
+                closeOnCancel: false }, 
+                function(isConfirm){   
+                      
+                        swal("Oops", "Cette fonctionnalité n'est plus disponible", "error");   
+                         });
+            }
+         </script>
+         <!-- Modal HTML -->
+         <div id="myModal1" class="modal fade">
+            <div class="modal-dialog modal-confirm">
+               <div class="modal-content">
+                  <div class="modal-header flex-column">
+                     <div class="icon-box">
+                        <i class="material-icons">&#xE5CD;</i>
+                     </div>
+                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                     <p>Cette fonctionnalité n'est pas disponible pour le moment.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div id="mymodal2" class="modal fade">
+            <div class="modal-dialog modal-confirm">
+               <div class="modal-content">
+                  <div class="modal-header flex-column">
+                     <div class="icon-box">
+                        <i class="material-icons">&#xE5CD;</i>
+                     </div>
+                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                     <p>Cette fonctionnalité n'est pas disponible pour le moment.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="table-header">
+         Resultats de la dernière recherche
+      </div>
+      <!-- div.table-responsive -->
+      <!-- div.dataTables_borderWrap -->
+      <div>
+      <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+         <thead>
+            <tr>
+               <th class="center hidden-480 ">
+                  <label class="pos-rel">
+                  <input type="checkbox" class="ace" />
+                  <span class="lbl"></span>
+                  </label>
+               </th>
+               <th class="hidden-480" >Nᵒ commande</th>
+               <th>Nom fournisseur</th>
+               <th>Montant</th>
+               <th  >
+                  Date
+               </th>
+               <th >Statut commande </th>
+               <th > Workflow </th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td class="center hidden-480">
+                  <label class="pos-rel">
+                  <input type="checkbox" class="ace" />
+                  <span class="lbl"></span>
+                  </label>
+               </td>
+               <td class="hidden-480">
+                  <a href="#">00001</a>
+               </td>
+               <td>EDF</td>
+               <td>3330 €</td>
+               <td >01 Fevrier 2021</td>
+               <td >
+                  <div class="progress ">
+                     <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:40%; background-color: #dc3545">40%</div>
+                  </div>
+               </td>
+               <td>
+                  <div  >
+                  <a class="blue" href ="#exampleModalLong1" data-toggle="modal">
+                  <i class="ace-icon fa fa-search-plus bigger-130"></i>
+                  </a>
+                  <!-- Barre de progression -->
+                  <div class="modal fade" id="exampleModalLong1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                     <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                           <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                              </button>
+                              <h5 class="modal-title" id="exampleModalLongTitle" style="margin-top:1px">Workflow de validation</h5>
+                           </div>
+                           <div class="modal-body">
+                              <div class="container-fluid">
+                                 <div class="col-md-12">
+                                    <div class="row" style="background-color: white">
+                                       <div class="timeline timeline-line-dotted">
+                                          <span class="timeline-label">
+                                          <span class="label label-nar"><i class="fa fa-tasks"></i></span>
+                                          </span>
+                                          <span class="timeline-label">
+                                          <span class="label label-primary">08.01.2021</span>
+                                          </span> 
+                                          <div class="timeline-item">
+                                             <div class="timeline-point timeline-point-success">
+                                                <i class="fa fa-check"></i>
+                                             </div>
+                                             <div class="timeline-event">
+                                                <div class="timeline-heading">
+                                                   <h4>Etape de gestion</h4>
+                                                </div>
+                                                <div class="timeline-body">
+                                                   <p>Validé par Luc Dupon</p>
+                                                </div>
+                                                <div class="timeline-footer">
+                                                   <p class="text-right">10.01.2021 09:00</p>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="timeline-item">
+                                             <div class="timeline-point timeline-point-success">
+                                                <i class="fa fa-check"></i>
+                                             </div>
+                                             <div class="timeline-event">
+                                                <div class="timeline-heading">
+                                                   <h4>Etape de gestion</h4>
+                                                </div>
+                                                <div class="timeline-body">
+                                                   <p>Validé par Luc Dupon</p>
+                                                </div>
+                                                <div class="timeline-footer">
+                                                   <p class="text-right">13.01.2021 09:00</p>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <span class="timeline-label">
+                                          <span class="label label-primary">14.01.2021</span>
+                                          </span>
+                                          <span class="timeline-label">
+                                          <span class="label label-nar-nar"><i class="fa fa-money"></i></span>
+                                          </span>
+                                          <span class="timeline-label">
+                                          <span class="label label-primary">15.01.2021</span>
+                                          </span>
+                                          <div class="timeline-item">
+                                             <div class="timeline-point timeline-point-success">
+                                                <i class="fa fa-check"></i>
+                                             </div>
+                                             <div class="timeline-event">
+                                                <div class="timeline-heading">
+                                                   <h4>Etape d'achat</h4>
+                                                </div>
+                                                <div class="timeline-body">
+                                                   <p>Validé par Alexa rousseau</p>
+                                                </div>
+                                                <div class="timeline-footer">
+                                                   <p class="text-right">15.01.2021 09:00</p>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="timeline-item">
+                                             <div class="timeline-point timeline-point-attente">
+                                                <i class="fa fa-hourglass"></i>
+                                             </div>
+                                             <div class="timeline-event">
+                                                <div class="timeline-heading">
+                                                   <h4>Etape d'achat </h4>
+                                                </div>
+                                                <div class="timeline-body">
+                                                   <p>En attente de validation par Alex Wallet </p>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <span class="timeline-label">
+                                          <span class="label label-primary">20.01.2021</span>
+                                          </span>
+                                          <span class="timeline-label">
+                                          <span class="label label-nar-danger"><i class="fa fa-dollar"></i></span>
+                                          </span> 
+                                          <span class="timeline-label">
+                                          <span class="label label-primary">25.01.2021</span>
+                                          </span>
+                                          <div class="timeline-item">
+                                             <div class="timeline-point timeline-point-danger">
+                                                <i class="fa fa-times"></i>
+                                             </div>
+                                             <div class="timeline-event">
+                                                <div class="timeline-heading">
+                                                   <h4>Etape du budget</h4>
+                                                </div>
+                                                <div class="timeline-body">
+                                                   <p>Rejetée par Isabelle Le Goff</p>
+                                                </div>
+                                                <div class="timeline-footer">
+                                                   <p class="text-right">26.01.2021 10:00</p>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <span class="timeline-label">
+                                          <span class="label label-primary">20.02.2021</span>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </td>
+            </tr>
+            <tr>
+               <td class="center hidden-480">
+                  <label class="pos-rel">
+                  <input type="checkbox" class="ace" />
+                  <span class="lbl"></span>
+                  </label>
+               </td>
+               <td class="hidden-480">
+                  <a href="#">00002</a>
+               </td>
+               <td>Engie</td>
+               <td >2595 €</td>
+               <td >15 Février 2021</td>
+               <td>
+                  <div class="progress ">
+                     <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:100%; background-color:#28a745">100%</div>
+                  </div>
+               </td>
+               <td>
+                  <div  >
+                  <a class="blue" href ="#exampleModalLong2" data-toggle="modal">
+                  <i class="ace-icon fa fa-search-plus bigger-130"></i>
+                  </a>
+                  <!-- Barre de progression -->
+                  <div class="modal fade" id="exampleModalLong2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                     <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                           <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                              </button>
+                              <h5 class="modal-title" id="exampleModalLongTitle" style="margin-top:1px">Workflow de validation</h5>
+                           </div>
+                           <div class="modal-body">
+                              <div class="container-fluid">
+                                 <div class="col-md-12">
+                                    <div class="row" style="background-color: white">
+                                       <div class="timeline timeline-line-dotted">
+                                          <span class="timeline-label">
+                                          <span class="label label-nar"><i class="fa fa-tasks"></i></span>
+                                          </span>
+                                          <span class="timeline-label">
+                                          <span class="label label-primary">08.01.2021</span>
+                                          </span> 
+                                          <div class="timeline-item">
+                                             <div class="timeline-point timeline-point-success">
+                                                <i class="fa fa-check"></i>
+                                             </div>
+                                             <div class="timeline-event">
+                                                <div class="timeline-heading">
+                                                   <h4>Etape de gestion</h4>
+                                                </div>
+                                                <div class="timeline-body">
+                                                   <p>Validé par Luc Dupon</p>
+                                                </div>
+                                                <div class="timeline-footer">
+                                                   <p class="text-right">10.01.2021 09:00</p>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="timeline-item">
+                                             <div class="timeline-point timeline-point-success">
+                                                <i class="fa fa-check"></i>
+                                             </div>
+                                             <div class="timeline-event">
+                                                <div class="timeline-heading">
+                                                   <h4>Etape de gestion</h4>
+                                                </div>
+                                                <div class="timeline-body">
+                                                   <p>Validé par Luc Dupon</p>
+                                                </div>
+                                                <div class="timeline-footer">
+                                                   <p class="text-right">13.01.2021 09:00</p>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <span class="timeline-label">
+                                          <span class="label label-primary">14.01.2021</span>
+                                          </span>
+                                          <span class="timeline-label">
+                                          <span class="label label-nar-nar" style="
+                                             background-color: #72b92e;"><i class="fa fa-money"></i></span>
+                                          </span>
+                                          <span class="timeline-label">
+                                          <span class="label label-primary">15.01.2021</span>
+                                          </span>
+                                          <div class="timeline-item">
+                                             <div class="timeline-point timeline-point-success">
+                                                <i class="fa fa-check"></i>
+                                             </div>
+                                             <div class="timeline-event">
+                                                <div class="timeline-heading">
+                                                   <h4>Etape de budget</h4>
+                                                </div>
+                                                <div class="timeline-body">
+                                                   <p>Validé par Alexa rousseau</p>
+                                                </div>
+                                                <div class="timeline-footer">
+                                                   <p class="text-right">15.01.2021 09:00</p>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <span class="timeline-label">
+                                          <span class="label label-primary">20.01.2021</span>
+                                          </span>
+                                          <span class="timeline-label">
+                                          <span class="label label-nar-success" style="background-color: #28a745"><i class="fa fa-dollar"></i></span>
+                                          </span> 
+                                          <span class="timeline-label">
+                                          <span class="label label-primary">25.01.2021</span>
+                                          </span>
+                                          <div class="timeline-item" >
+                                             <div class="timeline-point timeline-point-success " >
+                                                <i class="fa fa-check" ></i>
+                                             </div>
+                                             <div class="timeline-event">
+                                                <div class="timeline-heading">
+                                                   <h4>Etape d'achat</h4>
+                                                </div>
+                                                <div class="timeline-body">
+                                                   <p>Validée par Isabelle Le Goff</p>
+                                                </div>
+                                                <div class="timeline-footer">
+                                                   <p class="text-right">26.01.2021 10:00</p>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <span class="timeline-label">
+                                          <span class="label label-primary">20.02.2021</span>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </td>
+               </td>
+            </tr>
+            <tr>
+               <td class="center hidden-480">
+                  <label class="pos-rel">
+                  <input type="checkbox" class="ace" />
+                  <span class="lbl"></span>
+                  </label>
+               </td>
+               <td class="hidden-480">
+                  <a href="#">00003</a>
+               </td>
+               <td>PS France</td>
+               <td >4400 € </td>
+               <td >28 Février 2021</td>
+               <td>
+                  <div class="progress ">
+                     <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:20%; background-color:#dc3545">20%</div>
+                  </div>
+               </td>
+               <td>
+                  <div >
+                  <a class="blue" href ="#exampleModalLong3" data-toggle="modal">
+                  <i class="ace-icon fa fa-search-plus bigger-130"></i>
+                  </a>
+                  <!-- Barre de progression -->
+                  <div class="modal fade" id="exampleModalLong3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                     <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                           <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                              </button>
+                              <h5 class="modal-title" id="exampleModalLongTitle" style="margin-top:1px">Workflow de validation</h5>
+                           </div>
+                           <div class="modal-body">
+                              <div class="container-fluid">
+                                 <div class="col-md-12">
+                                    <div class="row" style="background-color: white">
+                                       <div class="timeline timeline-line-dotted">
+                                          <span class="timeline-label">
+                                          <span class="label label-nar" style="background-color: #d25a4b"><i class="fa fa-tasks"></i></span>
+                                          </span>
+                                          <span class="timeline-label">
+                                          <span class="label label-primary">08.01.2021</span>
+                                          </span> 
+                                          <div class="timeline-item">
+                                             <div class="timeline-point timeline-point-danger">
+                                                <i class="fa fa-times"></i>
+                                             </div>
+                                             <div class="timeline-event">
+                                                <div class="timeline-heading">
+                                                   <h4>Etape de gestion</h4>
+                                                </div>
+                                                <div class="timeline-body">
+                                                   <p>Rejetée par Luc Dupon</p>
+                                                </div>
+                                                <div class="timeline-footer">
+                                                   <p class="text-right">13.01.2021 09:00</p>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <span class="timeline-label">
+                                          <span class="label label-primary">14.01.2021</span>
+                                          </span>
+                                          <span class="timeline-label">
+                                          <span class="label label-nar-nar" style=" background-color: ##307ECC;"><i class="fa fa-money"></i></span>
+                                          </span>
+                                          <span class="timeline-label">
+                                          <span class="label label-primary">15.01.2021</span>
+                                          </span>
+                                          <div class="timeline-item">
+                                             <div class="timeline-point timeline-point-attente">
+                                                <i class="fa fa-hourglass"></i>
+                                             </div>
+                                             <div class="timeline-event">
+                                                <div class="timeline-heading">
+                                                   <h4>Etape d'achat</h4>
+                                                </div>
+                                                <div class="timeline-body">
+                                                   <p>En attente de validation par Alex Wallet </p>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <span class="timeline-label">
+                                          <span class="label label-primary">20.01.2021</span>
+                                          </span>
+                                          <span class="timeline-label">
+                                          <span class="label label-nar-danger"><i class="fa fa-dollar"></i></span>
+                                          </span> 
+                                          <span class="timeline-label">
+                                          <span class="label label-primary">25.01.2021</span>
+                                          </span>
+                                          <div class="timeline-item">
+                                             <div class="timeline-point timeline-point-danger">
+                                                <i class="fa fa-times"></i>
+                                             </div>
+                                             <div class="timeline-event">
+                                                <div class="timeline-heading">
+                                                   <h4>Etape d'achat</h4>
+                                                </div>
+                                                <div class="timeline-body">
+                                                   <p>Rejetée par Isabelle Le Goff</p>
+                                                </div>
+                                                <div class="timeline-footer">
+                                                   <p class="text-right">26.01.2021 10:00</p>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <span class="timeline-label">
+                                          <span class="label label-primary">20.02.2021</span>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </td>
+            </tr>
+            <tr>
+               <td class="center hidden-480">
+                  <label class="pos-rel">
+                  <input type="checkbox" class="ace" />
+                  <span class="lbl"></span>
+                  </label>
+               </td>
+               <td class="hidden-480">
+                  <a href="#">00004</a>
+               </td>
+               <td>APT Glass </td>
+               <td >6500 €</td>
+               <td >01 Mars 2021</td>
+               <td >
+                  <div class="progress ">
+                     <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:70%;  background-color:#17a2b8">70%</div>
+                  </div>
+               </td>
+               <td>
+                  <div  >
+                  <a class="blue" href ="#exampleModalLong2" data-toggle="modal">
+                  <i class="ace-icon fa fa-search-plus bigger-130"></i>
+                  </a>
+               </td>
+            </tr>
+            <tr>
+               <td class="center hidden-480">
+                  <label class="pos-rel">
+                  <input type="checkbox" class="ace" />
+                  <span class="lbl"></span>
+                  </label>
+               </td>
+               <td class="hidden-480">
+                  <a href="#">00005 </a>
+               </td>
+               <td>RATP</td>
+               <td >4250 €</td>
+               <td >07 Mars 2021</td>
+               <td >
+                  <div class="progress ">
+                     <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:80%;  background-color:#17a2b8">80%</div>
+                  </div>
+               </td>
+               <td>
+                  <div  >
+                  <a class="blue" href ="#exampleModalLong1" data-toggle="modal">
+                  <i class="ace-icon fa fa-search-plus bigger-130"></i>
+                  </a>
+               </td>
+            </tr>
+            <tr>
+               <td class="center hidden-480">
+                  <label class="pos-rel">
+                  <input type="checkbox" class="ace" />
+                  <span class="lbl"></span>
+                  </label>
+               </td>
+               <td class="hidden-480">
+                  <a href="#">00006 </a>
+               </td>
+               <td>APT Glass</td>
+               <td >3200 €</td>
+               <td >12 Mars 2021</td>
+               <td>
+                  <div class="progress ">
+                     <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:100%; background-color:#28a745">100%</div>
+                  </div>
+               </td>
+               <td>
+                  <div  >
+                  <a class="blue" href ="#exampleModalLong2" data-toggle="modal">
+                  <i class="ace-icon fa fa-search-plus bigger-130"></i>
+                  </a>
+               </td>
+            </tr>
+            <tr>
+               <td class="center hidden-480">
+                  <label class="pos-rel">
+                  <input type="checkbox" class="ace" />
+                  <span class="lbl"></span>
+                  </label>
+               </td>
+               <td class="hidden-480">
+                  <a href="#"> 00007</a>
+               </td>
+               <td>Loxam </td>
+               <td >8520 €</td>
+               <td >19 mars 2021</td>
+               <td >
+                  <div class="progress ">
+                     <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:5%; background-color:#dc3545">12%</div>
+                  </div>
+               </td>
+               <td>
+                  <div  >
+                  <a class="blue" href ="#exampleModalLong3" data-toggle="modal">
+                  <i class="ace-icon fa fa-search-plus bigger-130"></i>
+                  </a>
+               </td>
+            </tr>
+            <tr>
+               <td class="center hidden-480">
+                  <label class="pos-rel">
+                  <input type="checkbox" class="ace" />
+                  <span class="lbl"></span>
+                  </label>
+               </td>
+               <td class="hidden-480">
+                  <a href="#">00008</a>
+               </td>
+               <td>Company ZO</td>
+               <td >4100 €</td>
+               <td >20 Mars 2021</td>
+               <td >
+                  <div class="progress ">
+                     <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:60%; background-color:#17a2b8">60%</div>
+                  </div>
+               </td>
+               <td>
+                  <div  >
+                  <a class="blue" href ="#exampleModalLong1" data-toggle="modal">
+                  <i class="ace-icon fa fa-search-plus bigger-130"></i>
+                  </a>
+               </td>
+            </tr>
+            <tr>
+               <td class="center hidden-480">
+                  <label class="pos-rel">
+                  <input type="checkbox" class="ace" />
+                  <span class="lbl"></span>
+                  </label>
+               </td>
+               <td class="hidden-480">
+                  <a href="#">00009 </a>
+               </td>
+               <td>Company Zo</td>
+               <td >3940 €</td>
+               <td >21 Mars 2021</td>
+               <td >
+                  <div class="progress ">
+                     <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:50%; background-color:#ffc107">50%</div>
+                  </div>
+               </td>
+               <td>
+                  <div  >
+                  <a class="blue" href ="#exampleModalLong1" data-toggle="modal">
+                  <i class="ace-icon fa fa-search-plus bigger-130"></i>
+                  </a>
+               </td>
+            </tr>
+            <tr>
+               <td class="center hidden-480">
+                  <label class="pos-rel">
+                  <input type="checkbox" class="ace" />
+                  <span class="lbl"></span>
+                  </label>
+               </td >
+               <td class="hidden-480">
+                  <a href="#">00010</a>
+               </td>
+               <td>RATP </td>
+               <td >6400 €</td>
+               <td >23 Mars 2021</td>
+               <td >
+                  <div class="progress ">
+                     <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:50%; background-color:#ffc107">50%</div>
+                  </div>
+               </td>
+               <td>
+                  <div  >
+                     <a class="blue" href ="#exampleModalLong1" data-toggle="modal">
+                     <i class="ace-icon fa fa-search-plus bigger-130"></i>
+                     </a>
+               </td>
+            </tr>
+            <tr>
+            <td class="center hidden-480">
+            <label class="pos-rel">
+            <input type="checkbox" class="ace" />
+            <span class="lbl"></span>
+            </label>
+            </td>
+            <td class="hidden-480">
+            <a href="#">00011</a>
+            </td>
+            <td>Company ZO</td>
+            <td >2200 €</td>
+            <td >28 Mars 2021</td>
+            <td>
+            <div class="progress ">
+            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:10%; background-color:#dc3545">10%</div>
+            </div>                        
+            </td>
+            <td>
+            <div  >
+            <a class="blue" href ="#exampleModalLong" data-toggle="modal">
+            <i class="ace-icon fa fa-search-plus bigger-130"></i>
+            </a>
+            <!-- Barre de progression -->
+            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            <h5 class="modal-title" id="exampleModalLongTitle" style="margin-top:1px">Workflow de validation</h5>
+            </div>
+            <div class="modal-body">
+            <div class="container-fluid">
+            <div class="col-md-12">
+            <div class="row" style="background-color: white">
+            <div class="timeline timeline-line-dotted">
+            <span class="timeline-label">
+            <span class="label label-nar"><i class="fa fa-tasks"></i></span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-primary">08.01.2021</span>
+            </span> 
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape de gestion</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Luc Dupon</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">10.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape de gestion</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Luc Dupon</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">13.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">14.01.2021</span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-nar-nar"><i class="fa fa-money"></i></span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-primary">15.01.2021</span>
+            </span>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape d'achat</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Alexa rousseau</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">15.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-attente">
+            <i class="fa fa-hourglass"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape du budget</h4>
+            </div>
+            <div class="timeline-body">
+            <p>En attente de validation par Alex Wallet </p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">20.01.2021</span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-nar-danger"><i class="fa fa-dollar"></i></span>
+            </span> 
+            <span class="timeline-label">
+            <span class="label label-primary">25.01.2021</span>
+            </span>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-danger">
+            <i class="fa fa-times"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape d'achat</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Rejetée par Isabelle Le Goff</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">26.01.2021 10:00</p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">20.02.2021</span>
+            </span>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </td>
+            <tr>
+            <td class="center hidden-480">
+            <label class="pos-rel">
+            <input type="checkbox" class="ace" />
+            <span class="lbl"></span>
+            </label>
+            </td>
+            <td class="hidden-480">
+            <a href="#">00012</a>
+            </td>
+            <td>APT GLASS</td>
+            <td >4700 €</td>
+            <td >1 Avril 2021</td>
+            <td >
+            <div class="progress ">
+            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:50%; background-color:#ffc107">50%</div>
+            </div>                        
+            </td>
+            <td>
+            <div  >
+            <a class="blue" href ="#exampleModalLong" data-toggle="modal">
+            <i class="ace-icon fa fa-search-plus bigger-130"></i>
+            </a>
+            <!-- Barre de progression -->
+            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            <h5 class="modal-title" id="exampleModalLongTitle" style="margin-top:1px">Workflow de validation</h5>
+            </div>
+            <div class="modal-body">
+            <div class="container-fluid">
+            <div class="col-md-12">
+            <div class="row" style="background-color: white">
+            <div class="timeline timeline-line-dotted">
+            <span class="timeline-label">
+            <span class="label label-nar"><i class="fa fa-tasks"></i></span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-primary">08.01.2021</span>
+            </span> 
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape de gestion</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Luc Dupon</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">10.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape de gestion</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Luc Dupon</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">13.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">14.01.2021</span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-nar-nar"><i class="fa fa-money"></i></span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-primary">15.01.2021</span>
+            </span>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape d'achat</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Alexa rousseau</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">15.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-attente">
+            <i class="fa fa-hourglass"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape du budget</h4>
+            </div>
+            <div class="timeline-body">
+            <p>En attente de validation par Alex Wallet </p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">20.01.2021</span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-nar-danger"><i class="fa fa-dollar"></i></span>
+            </span> 
+            <span class="timeline-label">
+            <span class="label label-primary">25.01.2021</span>
+            </span>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-danger">
+            <i class="fa fa-times"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape d'achat</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Rejetée par Isabelle Le Goff</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">26.01.2021 10:00</p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">20.02.2021</span>
+            </span>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </td>
+            </tr>
+            <tr>
+            <td class="center hidden-480">
+            <label class="pos-rel">
+            <input type="checkbox" class="ace" />
+            <span class="lbl"></span>
+            </label>
+            </td>
+            <td class="hidden-480">
+            <a href="#">00013</a>
+            </td>
+            <td>RATP</td>
+            <td >1200 €</td>
+            <td >2 Avril 2021</td>
+            <td >
+            <div class="progress ">
+            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:50%; background-color:#ffc107">50%</div>
+            </div>                        
+            </td>
+            <td>
+            <div  >
+            <a class="blue" href ="#exampleModalLong" data-toggle="modal">
+            <i class="ace-icon fa fa-search-plus bigger-130"></i>
+            </a>
+            <!-- Barre de progression -->
+            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            <h5 class="modal-title" id="exampleModalLongTitle" style="margin-top:1px">Workflow de validation</h5>
+            </div>
+            <div class="modal-body">
+            <div class="container-fluid">
+            <div class="col-md-12">
+            <div class="row" style="background-color: white">
+            <div class="timeline timeline-line-dotted">
+            <span class="timeline-label">
+            <span class="label label-nar"><i class="fa fa-tasks"></i></span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-primary">08.01.2021</span>
+            </span> 
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape de gestion</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Luc Dupon</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">10.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape de gestion</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Luc Dupon</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">13.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">14.01.2021</span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-nar-nar"><i class="fa fa-money"></i></span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-primary">15.01.2021</span>
+            </span>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape d'achat</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Alexa rousseau</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">15.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-attente">
+            <i class="fa fa-hourglass"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape du budget</h4>
+            </div>
+            <div class="timeline-body">
+            <p>En attente de validation par Alex Wallet </p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">20.01.2021</span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-nar-danger"><i class="fa fa-dollar"></i></span>
+            </span> 
+            <span class="timeline-label">
+            <span class="label label-primary">25.01.2021</span>
+            </span>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-danger">
+            <i class="fa fa-times"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape d'achat</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Rejetée par Isabelle Le Goff</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">26.01.2021 10:00</p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">20.02.2021</span>
+            </span>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </td>
+            </tr>
+            <tr>
+            <td class="center hidden-480">
+            <label class="pos-rel">
+            <input type="checkbox" class="ace" />
+            <span class="lbl"></span>
+            </label>
+            </td>
+            <td class="hidden-480">
+            <a href="#">00014</a>
+            </td>
+            <td>Loxa</td>
+            <td >2700 €</td>
+            <td >3 Avril 2021</td>
+            <td >
+            <div class="progress ">
+            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:80%; background-color:#17a2b8">80%</div>
+            </div>                        
+            </td>
+            <td>
+            <div  >
+            <a class="blue" href ="#exampleModalLong" data-toggle="modal">
+            <i class="ace-icon fa fa-search-plus bigger-130"></i>
+            </a>
+            <!-- Barre de progression -->
+            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            <h5 class="modal-title" id="exampleModalLongTitle" style="margin-top:1px">Workflow de validation</h5>
+            </div>
+            <div class="modal-body">
+            <div class="container-fluid">
+            <div class="col-md-12">
+            <div class="row" style="background-color: white">
+            <div class="timeline timeline-line-dotted">
+            <span class="timeline-label">
+            <span class="label label-nar"><i class="fa fa-tasks"></i></span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-primary">08.01.2021</span>
+            </span> 
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape de gestion</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Luc Dupon</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">10.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape de gestion</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Luc Dupon</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">13.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">14.01.2021</span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-nar-nar"><i class="fa fa-money"></i></span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-primary">15.01.2021</span>
+            </span>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape d'achat</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Alexa rousseau</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">15.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-attente">
+            <i class="fa fa-hourglass"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape du budget</h4>
+            </div>
+            <div class="timeline-body">
+            <p>En attente de validation par Alex Wallet </p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">20.01.2021</span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-nar-danger"><i class="fa fa-dollar"></i></span>
+            </span> 
+            <span class="timeline-label">
+            <span class="label label-primary">25.01.2021</span>
+            </span>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-danger">
+            <i class="fa fa-times"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape d'achat</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Rejetée par Isabelle Le Goff</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">26.01.2021 10:00</p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">20.02.2021</span>
+            </span>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </td>
+            </tr>
+            <tr>
+            <td class="center hidden-480">
+            <label class="pos-rel">
+            <input type="checkbox" class="ace" />
+            <span class="lbl"></span>
+            </label>
+            </td>
+            <td class="hidden-480">
+            <a href="#">00015</a>
+            </td>
+            <td>EDF</td>
+            <td >2700 €</td>
+            <td >4 Avril 2021</td>
+            <td >
+            <div class="progress ">
+            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:100%; background-color:#28a745">100%</div>
+            </div>                        
+            </td>
+            <td>
+            <div  >
+            <a class="blue" href ="#exampleModalLong" data-toggle="modal">
+            <i class="ace-icon fa fa-search-plus bigger-130"></i>
+            </a>
+            <!-- Barre de progression -->
+            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            <h5 class="modal-title" id="exampleModalLongTitle" style="margin-top:1px">Workflow de validation</h5>
+            </div>
+            <div class="modal-body">
+            <div class="container-fluid">
+            <div class="col-md-12">
+            <div class="row" style="background-color: white">
+            <div class="timeline timeline-line-dotted">
+            <span class="timeline-label">
+            <span class="label label-nar"><i class="fa fa-tasks"></i></span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-primary">08.01.2021</span>
+            </span> 
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape de gestion</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Luc Dupon</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">10.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape de gestion</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Luc Dupon</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">13.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">14.01.2021</span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-nar-nar"><i class="fa fa-money"></i></span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-primary">15.01.2021</span>
+            </span>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape d'achat</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Alexa rousseau</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">15.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-attente">
+            <i class="fa fa-hourglass"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape du budget</h4>
+            </div>
+            <div class="timeline-body">
+            <p>En attente de validation par Alex Wallet </p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">20.01.2021</span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-nar-danger"><i class="fa fa-dollar"></i></span>
+            </span> 
+            <span class="timeline-label">
+            <span class="label label-primary">25.01.2021</span>
+            </span>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-danger">
+            <i class="fa fa-times"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape d'achat</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Rejetée par Isabelle Le Goff</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">26.01.2021 10:00</p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">20.02.2021</span>
+            </span>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </td>
+            </tr>
+            <tr>
+            <td class="center hidden-480">
+            <label class="pos-rel">
+            <input type="checkbox" class="ace" />
+            <span class="lbl"></span>
+            </label>
+            </td>
+            <td class="hidden-480">
+            <a href="#">00016</a>
+            </td>
+            <td>APT GLASS</td>
+            <td >4700 €</td>
+            <td >1 Avril 2021</td>
+            <td >
+            <div class="progress ">
+            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:50%; background-color:#ffc107">50%</div>
+            </div>                        
+            </td>
+            <td>
+            <div  >
+            <a class="blue" href ="#exampleModalLong" data-toggle="modal">
+            <i class="ace-icon fa fa-search-plus bigger-130"></i>
+            </a>
+            <!-- Barre de progression -->
+            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            <h5 class="modal-title" id="exampleModalLongTitle" style="margin-top:1px">Workflow de validation</h5>
+            </div>
+            <div class="modal-body">
+            <div class="container-fluid">
+            <div class="col-md-12">
+            <div class="row" style="background-color: white">
+            <div class="timeline timeline-line-dotted">
+            <span class="timeline-label">
+            <span class="label label-nar"><i class="fa fa-tasks"></i></span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-primary">08.01.2021</span>
+            </span> 
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape de gestion</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Luc Dupon</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">10.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape de gestion</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Luc Dupon</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">13.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">14.01.2021</span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-nar-nar"><i class="fa fa-money"></i></span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-primary">15.01.2021</span>
+            </span>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape d'achat</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Alexa rousseau</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">15.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-attente">
+            <i class="fa fa-hourglass"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape du budget</h4>
+            </div>
+            <div class="timeline-body">
+            <p>En attente de validation par Alex Wallet </p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">20.01.2021</span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-nar-danger"><i class="fa fa-dollar"></i></span>
+            </span> 
+            <span class="timeline-label">
+            <span class="label label-primary">25.01.2021</span>
+            </span>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-danger">
+            <i class="fa fa-times"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape d'achat</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Rejetée par Isabelle Le Goff</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">26.01.2021 10:00</p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">20.02.2021</span>
+            </span>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </td>
+            </tr>
+            <tr>
+            <td class="center hidden-480">
+            <label class="pos-rel">
+            <input type="checkbox" class="ace" />
+            <span class="lbl"></span>
+            </label>
+            </td>
+            <td class="hidden-480">
+            <a href="#">00017</a>
+            </td>
+            <td>Engie</td>
+            <td >7700 €</td>
+            <td >3 Avril 2021</td>
+            <td >
+            <div class="progress ">
+            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:60%; background-color:#17a2b8">60%</div>
+            </div>                        
+            </td>
+            <td>
+            <div  >
+            <a class="blue" href ="#exampleModalLong" data-toggle="modal">
+            <i class="ace-icon fa fa-search-plus bigger-130"></i>
+            </a>
+            <!-- Barre de progression -->
+            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            <h5 class="modal-title" id="exampleModalLongTitle" style="margin-top:1px">Workflow de validation</h5>
+            </div>
+            <div class="modal-body">
+            <div class="container-fluid">
+            <div class="col-md-12">
+            <div class="row" style="background-color: white">
+            <div class="timeline timeline-line-dotted">
+            <span class="timeline-label">
+            <span class="label label-nar"><i class="fa fa-tasks"></i></span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-primary">08.01.2021</span>
+            </span> 
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape de gestion</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Luc Dupon</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">10.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape de gestion</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Luc Dupon</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">13.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">14.01.2021</span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-nar-nar"><i class="fa fa-money"></i></span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-primary">15.01.2021</span>
+            </span>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape d'achat</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Alexa rousseau</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">15.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-attente">
+            <i class="fa fa-hourglass"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape du budget</h4>
+            </div>
+            <div class="timeline-body">
+            <p>En attente de validation par Alex Wallet </p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">20.01.2021</span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-nar-danger"><i class="fa fa-dollar"></i></span>
+            </span> 
+            <span class="timeline-label">
+            <span class="label label-primary">25.01.2021</span>
+            </span>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-danger">
+            <i class="fa fa-times"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape d'achat</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Rejetée par Isabelle Le Goff</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">26.01.2021 10:00</p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">20.02.2021</span>
+            </span>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </td>
+            </tr>
+            <tr>
+            <td class="center hidden-480">
+            <label class="pos-rel">
+            <input type="checkbox" class="ace" />
+            <span class="lbl"></span>
+            </label>
+            </td>
+            <td class="hidden-480">
+            <a href="#">00018</a>
+            </td>
+            <td>APT GLASS</td>
+            <td >3700 €</td>
+            <td >5 Avril 2021</td>
+            <td >
+            <div class="progress ">
+            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:100%; background-color:#28a745">100%</div>
+            </div>                        
+            </td>
+            <td>
+            <div  >
+            <a class="blue" href ="#exampleModalLong" data-toggle="modal">
+            <i class="ace-icon fa fa-search-plus bigger-130"></i>
+            </a>
+            <!-- Barre de progression -->
+            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            <h5 class="modal-title" id="exampleModalLongTitle" style="margin-top:1px">Workflow de validation</h5>
+            </div>
+            <div class="modal-body">
+            <div class="container-fluid">
+            <div class="col-md-12">
+            <div class="row" style="background-color: white">
+            <div class="timeline timeline-line-dotted">
+            <span class="timeline-label">
+            <span class="label label-nar"><i class="fa fa-tasks"></i></span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-primary">08.01.2021</span>
+            </span> 
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape de gestion</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Luc Dupon</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">10.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape de gestion</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Luc Dupon</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">13.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">14.01.2021</span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-nar-nar"><i class="fa fa-money"></i></span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-primary">15.01.2021</span>
+            </span>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-success">
+            <i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape d'achat</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Validé par Alexa rousseau</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">15.01.2021 09:00</p>
+            </div>
+            </div>
+            </div>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-attente">
+            <i class="fa fa-hourglass"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape du budget</h4>
+            </div>
+            <div class="timeline-body">
+            <p>En attente de validation par Alex Wallet </p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">20.01.2021</span>
+            </span>
+            <span class="timeline-label">
+            <span class="label label-nar-danger"><i class="fa fa-dollar"></i></span>
+            </span> 
+            <span class="timeline-label">
+            <span class="label label-primary">25.01.2021</span>
+            </span>
+            <div class="timeline-item">
+            <div class="timeline-point timeline-point-danger">
+            <i class="fa fa-times"></i>
+            </div>
+            <div class="timeline-event">
+            <div class="timeline-heading">
+            <h4>Etape d'achat</h4>
+            </div>
+            <div class="timeline-body">
+            <p>Rejetée par Isabelle Le Goff</p>
+            </div>
+            <div class="timeline-footer">
+            <p class="text-right">26.01.2021 10:00</p>
+            </div>
+            </div>
+            </div>
+            <span class="timeline-label">
+            <span class="label label-primary">20.02.2021</span>
+            </span>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </td>
+            </tr>
+            </tr>
+         </tbody>
+      </table>
+      </div>
+      </div>
+      </div>
+      <!-- PAGE CONTENT ENDS -->
+      </div>
+      <!-- /.col -->
+      </div>
+      <!-- /.row -->
+      </div>
+      <!-- /.page-content -->
+      </div>
+      </div>
+      <!-- /.main-content -->
+      <div class="footer">
+      <div class="footer-inner">
+      <div class="footer-content">
+      &nbsp; &nbsp;
+      <span class="action-buttons">
+      <a href="#">
+      <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+      </a>
+      <a href="#">
+      <i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+      </a>
+      <a href="#">
+      <i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+      </a>
+      </span>
+      </div>
+      </div>
+      </div>
+      </div>
+      <script src="assets/js/jquery-2.1.4.min.js"></script>
+      <script type="text/javascript">
+         if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+      </script>
+      <script src="assets/js/bootstrap.min.js"></script>
+      <!-- page specific plugin scripts -->
+      <script src="assets/js/jquery.dataTables.min.js"></script>
+      <script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
+      <script src="assets/js/dataTables.buttons.min.js"></script>
+      <script src="assets/js/dataTables.select.min.js"></script>
+      <!-- ace scripts -->
+      <script src="assets/js/ace.min.js"></script>
+      <script type="text/javascript">
+         jQuery(function($) {
+            //initiate dataTables plugin
+            var myTable = 
+            $('#dynamic-table')
+            //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+            .DataTable( {
+               bAutoWidth: false,
+               "aoColumns": [
+                 { "bSortable": false },
+                 null, null,null, null, null,
+                 { "bSortable": false }
+               ],
+               "aaSorting": [],
+               
+               select: {
+                  style: 'multi'
+               },
+               "language": {
+                "sEmptyTable":     "Aucune donnée disponible dans le tableau",
+                "sInfo":           "Affichage de l'élément _START_ à _END_ sur _TOTAL_ éléments",
+                "sInfoEmpty":      "Affichage de l'élément 0 à 0 sur 0 élément",
+                "sInfoFiltered":   "(filtré à partir de _MAX_ éléments au total)",
+                "sInfoPostFix":    "",
+                "sInfoThousands":  ",",
+                "sLengthMenu":     "Afficher _MENU_ éléments",
+                "sLoadingRecords": "Chargement...",
+                "sProcessing":     "Traitement...",
+                "sSearch":         "Rechercher :",
+                "sZeroRecords":    "Aucun élément correspondant trouvé",
+                "oPaginate": {
+                    "sFirst":    "Premier",
+                    "sLast":     "Dernier",
+                    "sNext":     "Suivant",
+                    "sPrevious": "Précédent"
+                },
+                "oAria": {
+                    "sSortAscending":  ": activer pour trier la colonne par ordre croissant",
+                    "sSortDescending": ": activer pour trier la colonne par ordre décroissant"
+                },
+                "select": {
+                    "rows": {
+                        "_": " %d lignes sélectionnées",
+                        "0": " ",
+                        "1": " 1 ligne sélectionnée"
+                    }
+                }
+            },
+          "ordering": false // enelver le tri des colonnes
+             } );
+         
+            
+            
+         
+            myTable.buttons().container().appendTo( $('.tableTools-container') );
+            
+            //style the message box
+            var defaultCopyAction = myTable.button(1).action();
+            myTable.button(1).action(function (e, dt, button, config) {
+               defaultCopyAction(e, dt, button, config);
+               $('.dt-button-info').addClass('gritter-item-wrapper gritter-info gritter-center white');
+            });
+            
+            
+            var defaultColvisAction = myTable.button(0).action();
+            myTable.button(0).action(function (e, dt, button, config) {
+               
+               defaultColvisAction(e, dt, button, config);
+               
+               
+               if($('.dt-button-collection > .dropdown-menu').length == 0) {
+                  $('.dt-button-collection')
+                  .wrapInner('<ul class="dropdown-menu dropdown-light dropdown-caret dropdown-caret" />')
+                  .find('a').attr('href', '#').wrap("<li />")
+               }
+               $('.dt-button-collection').appendTo('.tableTools-container .dt-buttons')
+            });
+         
+            ////
+         
+            setTimeout(function() {
+               $($('.tableTools-container')).find('a.dt-button').each(function() {
+                  var div = $(this).find(' > div').first();
+                  if(div.length == 1) div.tooltip({container: 'body', title: div.parent().text()});
+                  else $(this).tooltip({container: 'body', title: $(this).text()});
+               });
+            }, 500);
+            
+            
+            
+            
+            
+            myTable.on( 'select', function ( e, dt, type, index ) {
+               if ( type === 'row' ) {
+                  $( myTable.row( index ).node() ).find('input:checkbox').prop('checked', true);
+               }
+            } );
+            myTable.on( 'deselect', function ( e, dt, type, index ) {
+               if ( type === 'row' ) {
+                  $( myTable.row( index ).node() ).find('input:checkbox').prop('checked', false);
+               }
+            } );
+         
+         
+         
+         
+            /////////////////////////////////
+            //table checkboxes
+            $('th input[type=checkbox], td input[type=checkbox]').prop('checked', false);
+            
+            //select/deselect all rows according to table header checkbox
+            $('#dynamic-table > thead > tr > th input[type=checkbox], #dynamic-table_wrapper input[type=checkbox]').eq(0).on('click', function(){
+               var th_checked = this.checked;//checkbox inside "TH" table header
+               
+               $('#dynamic-table').find('tbody > tr').each(function(){
+                  var row = this;
+                  if(th_checked) myTable.row(row).select();
+                  else  myTable.row(row).deselect();
+               });
+            });
+            
+            //select/deselect a row when the checkbox is checked/unchecked
+            $('#dynamic-table').on('click', 'td input[type=checkbox]' , function(){
+               var row = $(this).closest('tr').get(0);
+               if(this.checked) myTable.row(row).deselect();
+               else myTable.row(row).select();
+            });
+         
+         
+         
+            $(document).on('click', '#dynamic-table .dropdown-toggle', function(e) {
+               e.stopImmediatePropagation();
+               e.stopPropagation();
+               e.preventDefault();
+            });
+            
+            
+            
+            
+         
+            /********************************/
+            //add tooltip for small view action buttons in dropdown menu
+            $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+            
+            //tooltip placement on right or left
+            function tooltip_placement(context, source) {
+               var $source = $(source);
+               var $parent = $source.closest('table')
+               var off1 = $parent.offset();
+               var w1 = $parent.width();
+         
+               var off2 = $source.offset();
+               //var w2 = $source.width();
+         
+               if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+               return 'left';
+            }
+            
+            
+            
+            
+            /***************/
+            $('.show-details-btn').on('click', function(e) {
+               e.preventDefault();
+               $(this).closest('tr').next().toggleClass('open');
+               $(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
+            });
+            /***************/
+         
+         
+         })
+         
+         
+         
+         
+      </script>
+   </body>
+</html>

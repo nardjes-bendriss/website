@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+      <meta charset="utf-8" />
+      <title>B&B</title>
+      <meta name="description" content="Static &amp; Dynamic Tables" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+      <!-- bootstrap & fontawesome -->
+      <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+      <!-- Test-->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <!-- page specific plugin styles -->
+      <!-- text fonts -->
+      <link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
+      <!-- ace styles -->
+      <link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    
+      <script src="assets/js/ace-extra.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+      
+
+
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style type="text/css">
+      .chart {
+  width: 100%; 
+  min-height: 450px;
+}
+.row {
+  margin:0 !important;
+}</style>
+   </head>
+   <body class="no-skin">
+      <div id="navbar" class="navbar navbar-default  ace-save-state">
+         <div class="navbar-container ace-save-state" id="navbar-container">
+               <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+               <span class="sr-only"></span>
+
+               <span class="icon-bar"></span>
+
+               <span class="icon-bar"></span>
+
+               <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-header pull-left">
+               <a href="index.html" class="navbar-brand">
+               <small>
+               <i class="fa fa-leaf"></i>
+               B&B Admin
+               </small>
+               </a>
+            </div>
+            <div class="navbar-buttons navbar-header pull-right" role="navigation">
+               <ul class="nav ace-nav">
+                  <li class="light-blue dropdown-modal">
+                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                     <img class="nav-user-photo" src="assets/images/avatars/avatar3.png" alt="Jason's Photo" />
+                     <span class="user-info">
+                     Bienvenue
+                     </span>
+                     <i class="ace-icon fa fa-caret-down"></i>
+                     </a>
+                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                        <li>
+                           <a href="#">
+                           <i class="ace-icon fa fa-cog"></i>
+                           Paramétres
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#">
+                           <i class="ace-icon fa fa-user"></i>
+                           Profile
+                           </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                           <a href="#">
+                           <i class="ace-icon fa fa-power-off"></i>
+                           Déconnexion
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <!-- /.navbar-container -->
+      </div>
+      <div class="main-container ace-save-state" id="main-container">
+         <script type="text/javascript">
+            try{ace.settings.loadState('main-container')}catch(e){}
+         </script>
+         <div id="sidebar" class="sidebar                  responsive                    ace-save-state">
+            <script type="text/javascript">
+               try{ace.settings.loadState('sidebar')}catch(e){}
+            </script>
+            <ul class="nav nav-list">
+               <li class="active open">
+                  <a href="#" class="dropdown-toggle">
+                  <i class="menu-icon fa fa-tachometer"></i>
+                  <span class="menu-text"> Dashboard </span>
+                  </a>
+                  <b class="arrow"></b>
+               </li>
+               <li class="" >
+                  <a href="./index.html">
+                  <i class="menu-icon fa fa-list"></i>
+                  <span class="menu-text"> Commandes </span>
+                  </a>
+               </li>
+            </ul>
+            <!-- /.nav-list -->
+            <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+               <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+            </div>
+         </div>
+         <div class="main-content">
+            <div class="main-content-inner">
+               <div class="page-content">
+  <div class="col-md-12 text-center">
+    <h1>Visualisations des données</h1>
+  </div>
+  <div class="col-md-4 col-md-offset-4">
+    <hr />
+  </div>
+
+  <div class="clearfix"></div>
+  <div class="row">
+      <div class="col-md-6">
+
+      <div id="piechart" class="chart" ></div>
+    </div>
+    <div class="col-md-6">
+      
+      <div id="barchart_values" class="chart"></div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    
+        <div id="chart_div" class="chart"></div>
+
+  </div>
+
+  <div class="row">
+    
+        <div id="chart_div1" class="chart"></div>
+  </div>
+
+     <div class="row">
+     <div id="curve_chart" class="chart" ></div>
+  </div>
+
+ 
+                        <!-- PAGE CONTENT ENDS -->
+                     </div>
+                     <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+               </div>
+               <!-- /.page-content -->
+            </div>
+         </div>
+
+
+
+
+
+         <!-- /.main-content -->
+         <div class="footer">
+            <div class="footer-inner">
+               <div class="footer-content">
+                  &nbsp; &nbsp;
+                  <span class="action-buttons">
+                  <a href="#">
+                  <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+                  </a>
+                  <a href="#">
+                  <i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+                  </a>
+                  <a href="#">
+                  <i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+                  </a>
+                  </span>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- /.main-container -->
+      <!-- basic scripts -->
+      <!--[if !IE]> -->
+      <script src="assets/js/jquery-2.1.4.min.js"></script>
+      <!-- <![endif]-->
+      <!--[if IE]>
+      <script src="assets/js/jquery-1.11.3.min.js"></script>
+      <![endif]-->
+      <script type="text/javascript">
+         if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+      </script>
+      <script src="assets/js/bootstrap.min.js"></script>
+      <!-- Jquery table-->
+      <script src="assets/js/jquery.dataTables.min.js"></script>
+      <script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
+      <script src="assets/js/dataTables.buttons.min.js"></script>
+
+      <script src="jQuery-plugin-progressbar.js"></script>
+      <!-- ace scripts -->
+      <script src="assets/js/ace.min.js"></script>
+      <!-- inline scripts related to this page -->
+      </script>
+
+      <script type="text/javascript">
+         jQuery(function($) {
+         	//Initialiser la table jquery
+         	var myTable = 
+         	$('#dynamic-table')
+         	.DataTable( {
+         						bAutoWidth: false,
+         		"aoColumns": [
+         		  { "bSortable": false },
+         		  null, null,null, null, null,
+         		  { "bSortable": false }
+         		],
+         		"aaSorting": [],
+         		
+         		select: {
+         			style: 'multi'
+         		},
+         			"language": {
+          "sProcessing": "Traitement en cours ...",
+          "sLengthMenu": "Afficher _MENU_ lignes",
+          "sZeroRecords": "Aucun résultat trouvé",
+          "sEmptyTable": "Aucune donnée disponible",
+          "sInfo": "Lignes _START_ à _END_ sur _TOTAL_",
+          "sInfoEmpty": "Aucune ligne affichée",
+          "sInfoFiltered": "(Filtrer un maximum de_MAX_)",
+          "sInfoPostFix": "",
+          "sSearch": "Chercher:",
+          "sUrl": "",
+          "sInfoThousands": ",",
+          "sLoadingRecords": "Chargement...",
+          "oPaginate": {
+            "sFirst": "Premier", "sLast": "Dernier", "sNext": "Suivant", "sPrevious": "Précédent"
+          },
+          "oAria": {
+            "sSortAscending": ": Trier par ordre croissant", "sSortDescending": ": Trier par ordre décroissant"
+          }
+         },
+          "ordering": false // enelver le tri des colonnes
+             } );
+         
+         	
+         	
+         	$.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
+         	
+         	new $.fn.dataTable.Buttons( myTable, {
+         		buttons: [
+         		  {
+         			"extend": "colvis",
+         			"text": "<i class='fa fa-search bigger-110 blue'></i> <span class='hidden'>Show/hide columns</span>",
+         			"className": "btn btn-white btn-primary btn-bold",
+         			columns: ':not(:first):not(:last)'
+         		  },
+         		  {
+         			"extend": "csv",
+         			"text": "<i class='fa fa-plus bigger-110 red'></i> <span class='hidden'>Ajouter une commande</span>",
+         			"className": "btn btn-white btn-primary btn-bold"
+         		  },
+         
+         		  
+         		]
+         	} );
+         	myTable.buttons().container().appendTo( $('.tableTools-container') );
+         	
+         	//style the message box
+         	var defaultCopyAction = myTable.button(1).action();
+         	myTable.button(1).action(function (e, dt, button, config) {
+         		defaultCopyAction(e, dt, button, config);
+         		$('.dt-button-info').addClass('gritter-item-wrapper gritter-info gritter-center white');
+         	});
+         	
+         	
+         	var defaultColvisAction = myTable.button(0).action();
+         	myTable.button(0).action(function (e, dt, button, config) {
+         		
+         		defaultColvisAction(e, dt, button, config);
+         		
+         		
+         		if($('.dt-button-collection > .dropdown-menu').length == 0) {
+         			$('.dt-button-collection')
+         			.wrapInner('<ul class="dropdown-menu dropdown-light dropdown-caret dropdown-caret" />')
+         			.find('a').attr('href', '#').wrap("<li />")
+         		}
+         		$('.dt-button-collection').appendTo('.tableTools-container .dt-buttons')
+         	});
+
+         	setTimeout(function() {
+         		$($('.tableTools-container')).find('a.dt-button').each(function() {
+         			var div = $(this).find(' > div').first();
+         			if(div.length == 1) div.tooltip({container: 'body', title: div.parent().text()});
+         			else $(this).tooltip({container: 'body', title: $(this).text()});
+         		});
+         	}, 500);
+
+         	myTable.on( 'select', function ( e, dt, type, index ) {
+         		if ( type === 'row' ) {
+         			$( myTable.row( index ).node() ).find('input:checkbox').prop('checked', true);
+         		}
+         	} );
+         	myTable.on( 'deselect', function ( e, dt, type, index ) {
+         		if ( type === 'row' ) {
+         			$( myTable.row( index ).node() ).find('input:checkbox').prop('checked', false);
+         		}
+         	} );
+         	/////////////////////////////////
+         	//table checkboxes
+         	$('th input[type=checkbox], td input[type=checkbox]').prop('checked', false);
+         	
+         	//select/deselect all rows according to table header checkbox
+         	$('#dynamic-table > thead > tr > th input[type=checkbox], #dynamic-table_wrapper input[type=checkbox]').eq(0).on('click', function(){
+         		var th_checked = this.checked;//checkbox inside "TH" table header
+         		
+         		$('#dynamic-table').find('tbody > tr').each(function(){
+         			var row = this;
+         			if(th_checked) myTable.row(row).select();
+         			else  myTable.row(row).deselect();
+         		});
+         	});
+         	
+         	//select/deselect a row when the checkbox is checked/unchecked
+         	$('#dynamic-table').on('click', 'td input[type=checkbox]' , function(){
+         		var row = $(this).closest('tr').get(0);
+         		if(this.checked) myTable.row(row).deselect();
+         		else myTable.row(row).select();
+         	});
+         
+         
+         
+         	$(document).on('click', '#dynamic-table .dropdown-toggle', function(e) {
+         		e.stopImmediatePropagation();
+         		e.stopPropagation();
+         		e.preventDefault();
+         	});
+         	
+         	
+         	
+         	//And for the first simple table, which doesn't have TableTools or dataTables
+         	//select/deselect all rows according to table header checkbox
+         	var active_class = 'active';
+         	$('#simple-table > thead > tr > th input[type=checkbox]').eq(0).on('click', function(){
+         		var th_checked = this.checked;//checkbox inside "TH" table header
+         		
+         		$(this).closest('table').find('tbody > tr').each(function(){
+         			var row = this;
+         			if(th_checked) $(row).addClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', true);
+         			else $(row).removeClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', false);
+         		});
+         	});
+         	
+         	//select/deselect a row when the checkbox is checked/unchecked
+         	$('#simple-table').on('click', 'td input[type=checkbox]' , function(){
+         		var $row = $(this).closest('tr');
+         		if($row.is('.detail-row ')) return;
+         		if(this.checked) $row.addClass(active_class);
+         		else $row.removeClass(active_class);
+         	});
+         
+         	
+         
+         	/********************************/
+         	//add tooltip for small view action buttons in dropdown menu
+         	$('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+         	
+         	//tooltip placement on right or left
+         	function tooltip_placement(context, source) {
+         		var $source = $(source);
+         		var $parent = $source.closest('table')
+         		var off1 = $parent.offset();
+         		var w1 = $parent.width();
+         
+         		var off2 = $source.offset();
+         		//var w2 = $source.width();
+         
+         		if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+         		return 'left';
+         	}
+         	
+         	
+         	
+         	
+         	/***************/
+         	$('.show-details-btn').on('click', function(e) {
+         		e.preventDefault();
+         		$(this).closest('tr').next().toggleClass('open');
+         		$(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
+         	});
+         	/***************/
+         	
+         	
+         	
+      
+         
+         
+         })
+
+
+       $(window).resize(function(){
+                drawChart();
+                drawChart3();
+                drawChart2();
+                drawVisualization();
+                drawChart5();
+}); 
+
+// Graphe cercle 
+
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart3);
+
+      function drawChart3() {
+
+      var data = new google.visualization.DataTable();
+         data.addColumn('string', 'Commandes');
+         data.addColumn('number', 'Etat de la commande');
+         data.addRows([
+        ['Validées', 14],
+        ['En cours de validation', 6],
+        ['Rejetées', 5],
+      ]);
+        var options = {
+          title: 'Etat des bons de commandes',
+          colors: ['#0a9a2d', '#4454cb', '#e3111d']
+
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+
+   google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "Nombre de commandes validé", { role: "style" } ],
+        ["Luc Dupont", 6, "#b87333"],
+        ["Alexa Rousseau", 3, "silver"],
+        ["Laurene Leclerc", 4, "gold"],
+        ["Isabelle Le Goff", 12, "color: #e5e4e2"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Nombre de commandes validé par personne",
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
+      chart.draw(view, options);
+  }
+
+
+  google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart2);
+
+      function drawChart2() {
+        var data = google.visualization.arrayToDataTable([
+          ['Mois', 'Commandes'],
+          ['Février',  5000],
+          ['Mars',  3000],
+          ['Avril',  7000],
+          ['Mai',  9200],
+          ['Juin',  6600],
+        ]);
+
+        var options = {
+          title: 'Total de commandes (€)',
+          hAxis: {title: 'Mois',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0},
+                    legend: { position: 'bottom' }
+
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+
+
+
+
+
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawVisualization);
+
+      function drawVisualization() {
+        // Some raw data (not necessarily accurate)
+        var data = google.visualization.arrayToDataTable([
+          ['EDF', 'APT Glass', 'PS France', 'Company ZO', 'Loxam', 'RATP', 'Moyenne'],
+          ['Février',  165,      938,         522,             998,           450,      614.6],
+          ['Mars',  135,      1120,        599,             1268,          288,      682],
+          ['Avril',  157,      1167,        587,             807,           397,      623],
+          ['Mai',  139,      1110,        615,             968,           215,      609.4],
+          ['Juin',  136,      691,         629,             1026,          366,      569.6]
+        ]);
+
+        var options = {
+          title : 'Les fournisseurs les plus actifs',
+          vAxis: {title: 'Montant (€) '},
+          hAxis: {title: 'Mois'},
+          seriesType: 'bars',
+                    legend: { position: 'bottom' },
+          series: {5: {type: 'line'}}
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('chart_div1'));
+        chart.draw(data, options);
+      }
+
+
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart5);
+
+      function drawChart5() {
+        var data = google.visualization.arrayToDataTable([
+          ['Mois', 'Gestion','Achat', 'Budget'],
+          ['Février',  25,      22, 12],
+          ['Mars',  11,      20, 10],
+          ['Avril',  23,       25, 25],
+          ['Mai',  18,      25, 20]
+        ]);
+
+        var options = {
+          title: 'Commandes Validées selon les étapes',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+         
+      </script>
+      
+   </body>
+</html>
